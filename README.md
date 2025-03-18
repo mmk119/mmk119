@@ -8,8 +8,8 @@
 - 🌍 Based in **Lebanon**
 - 🎓 Pursuing a **B.Sc. in Computer Science** (Graduation: May 2026)
 - 💡 Exploring **algorithm design, software engineering, and database systems**
-- 💬 Ask me about **C, C++, Java, or problem-solving strategies**
-- 🛠️ Currently learning **React.js, Node.js, PostgreSQL**
+- 💬 Ask me about **C, C++, Java, problem-solving strategies, or full-stack development**
+- 🛠️ Currently working with **Node.js, Express, HTML, CSS, SQL**
 - 🌱 Volunteering to make education accessible for all.
 
 ---
@@ -20,6 +20,10 @@
 ![C++](https://img.shields.io/badge/Code-C%2B%2B-green)
 ![HTML](https://img.shields.io/badge/Markup-HTML-red)
 ![CSS](https://img.shields.io/badge/Style-CSS-yellow)
+![JavaScript](https://img.shields.io/badge/Language-JavaScript-brightgreen)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-darkgreen)
+![Express.js](https://img.shields.io/badge/Framework-Express.js-black)
+![SQL](https://img.shields.io/badge/Database-SQL-blueviolet)
 ![Git](https://img.shields.io/badge/VersionControl-Git-informational)
 ![GitHub](https://img.shields.io/badge/Platform-GitHub-lightgrey)
 ![Cybersecurity](https://img.shields.io/badge/Skills-Cybersecurity-critical)
@@ -32,6 +36,11 @@
 - Features a two-player mode and a bot for strategic single-player gameplay.
 - Integrated radar sweeps, torpedo commands, and optimized game logic.
 
+### 🌐 [Full-Stack Web App](#)
+- Built a **Node.js & Express** web application with **SQL database integration**.
+- Implemented **secure authentication & CRUD operations**.
+- Designed a **responsive frontend using HTML, CSS, and JavaScript**.
+
 ---
 
 ## 🎓 Certifications
@@ -39,11 +48,13 @@
 - **Offensive Cybersecurity Bootcamp** (Semi-colon & Google Developer Group)
 - **SEO Certification** (USAID)
 - **Web Development** (FEKRA Organization)
+
 ---
 
 ## 📊 GitHub Stats
 ![Mohamad's GitHub Stats](https://github-readme-stats.vercel.app/api?username=mmk119&show_icons=true&theme=radical)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mmk119&layout=compact&theme=radical)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mmk119&langs_count=6&layout=compact&theme=radical)
+
 
 ---
 
@@ -52,10 +63,3 @@
 - 💼 [LinkedIn](https://www.linkedin.com/in/mohammad-kassem-74a2241a5)
 
 ---
-
-### 🌈 Fun Fact
-I believe in the power of education and innovation to transform lives. Whether through coding or volunteering, I strive to make a difference.
-
----
-
-Feel free to tweak and customize this further! If you need help setting it up or adding more elements, let me know.

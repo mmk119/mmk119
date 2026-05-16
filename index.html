@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohammad M. Kassem — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #21262d;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --accent3: #f78166;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --card-hover: #1c2128;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(88, 166, 255, 0.08) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent2);
+      background: rgba(63, 185, 80, 0.1);
+      border: 1px solid rgba(63, 185, 80, 0.3);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .btn-primary:hover { background: #79b8ff; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      background: var(--card-hover);
+    }
+
+    .skill-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-card h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .tag.accent { background: rgba(88, 166, 255, 0.1); border-color: rgba(88, 166, 255, 0.3); color: var(--accent); }
+    .tag.green  { background: rgba(63, 185, 80, 0.1);  border-color: rgba(63, 185, 80, 0.3);  color: var(--accent2); }
+    .tag.red    { background: rgba(247, 129, 102, 0.1); border-color: rgba(247, 129, 102, 0.3); color: var(--accent3); }
+
+    /* ── TIMELINE (Experience) ── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--border));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem;
+      top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+
+    .timeline-item:first-child::before { background: var(--accent2); }
+
+    .timeline-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .timeline-company {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .timeline-item ul {
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .timeline-item ul li {
+      padding: 0.2rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .timeline-item ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+      font-size: 0.75rem;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      background: var(--card-hover);
+    }
+
+    .project-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-icon { font-size: 1.5rem; }
+
+    .project-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .project-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .project-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .edu-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .edu-degree {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .edu-school {
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .edu-note {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── ACTIVITIES ── */
+    .activities-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .activity-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .activity-icon { font-size: 1.25rem; flex-shrink: 0; }
+
+    .activity-item h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .activity-item p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 4rem 1.25rem; }
+      .edu-card { flex-direction: column; }
+      .contact-box { padding: 2rem 1.25rem; }
+      .hero-stats { gap: 1.5rem; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content > * {
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+    .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">mmk119</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">✦ Open to opportunities</div>
+      <h1>Hi, I'm <span>Mohammad</span><br />Kassem</h1>
+      <p class="hero-subtitle">
+        Aspiring Software Engineer — full-stack developer, data enthusiast, and lifelong learner based in Lebanon.
+      </p>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="mailto:mohammad15kassem@gmail.com">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Get in touch
+        </a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/mohammad-kassem-74a2241a5" target="_blank" rel="noopener">
+          LinkedIn ↗
+        </a>
+        <a class="btn btn-outline" href="https://github.com/mmk119" target="_blank" rel="noopener">
+          GitHub ↗
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Internships</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">AUB</div>
+          <div class="stat-label">Scholar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT / SKILLS -->
+  <section id="about">
+    <p class="section-label">// skills</p>
+    <h2 class="section-title">What I work with</h2>
+    <p class="section-desc">
+      Full-stack development is my home base — but I enjoy going deep wherever the problem takes me, from ML pipelines to database design.
+    </p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-icon">⚡</div>
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="tag accent">JavaScript</span>
+          <span class="tag accent">Python</span>
+          <span class="tag accent">Java</span>
+          <span class="tag accent">C</span>
+          <span class="tag accent">C++</span>
+          <span class="tag accent">TypeScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🌐</div>
+        <h3>Frameworks</h3>
+        <div class="skill-tags">
+          <span class="tag green">React</span>
+          <span class="tag green">Node.js</span>
+          <span class="tag green">Express</span>
+          <span class="tag green">Astro</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🗄️</div>
+        <h3>Databases</h3>
+        <div class="skill-tags">
+          <span class="tag">MongoDB</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Mongoose</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-icon">🛠️</div>
+        <h3>Testing & QA</h3>
+        <div class="skill-tags">
+          <span class="tag red">Cypress</span>
+          <span class="tag red">Postman</span>
+          <span class="tag red">Skwid</span>
+          <span class="tag red">GitHub Actions</span>
+          <span class="tag red">Agile/Scrum</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">// experience</p>
+    <h2 class="section-title">Where I've worked</h2>
+    <p class="section-desc">
+      From startup backends to university labs — each role has sharpened a different edge.
+    </p>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-title">Backend Engineer Intern — <span class="timeline-company">Tawasoul</span></div>
+          </div>
+          <span class="timeline-date">Apr 2026 – Present · Remote</span>
+        </div>
+        <ul>
+          <li>Optimized web performance &amp; SEO using Astro's islands architecture and static site generation.</li>
+          <li>Migrated legacy backend logic to TypeScript for a more robust, scalable codebase.</li>
+          <li>Developed and integrated type-safe API endpoints for the core platform.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-title">CS Tutor — <span class="timeline-company">Our Easy Game Tutoring LLC (OEG)</span></div>
+          </div>
+          <span class="timeline-date">Jun 2025 – Apr 2026 · Remote</span>
+        </div>
+        <ul>
+          <li>Mentored CS students through challenging technical material.</li>
+          <li>Specialized in bridging the gap between theory and practical application.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-title">Teaching Assistant — <span class="timeline-company">AUB</span></div>
+          </div>
+          <span class="timeline-date">Sep – Dec 2025 · Beirut</span>
+        </div>
+        <ul>
+          <li>Led university lab sessions focused on Excel-based business analytics.</li>
+          <li>Supported students in applying technical concepts to real-world problems.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-title">Data Management Intern — <span class="timeline-company">Beit Atfal Assomoud</span></div>
+          </div>
+          <span class="timeline-date">Jun – Aug 2024 · Sour</span>
+        </div>
+        <ul>
+          <li>Recorded and managed organization data, including student details and social worker tracking.</li>
+          <li>Ensured accuracy and consistency of records within the organization's system.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">// projects</p>
+    <h2 class="section-title">Things I've built</h2>
+    <p class="section-desc">
+      A mix of full-stack platforms, ML pipelines, and systems-level programs.
+    </p>
+    <div class="projects-grid">
+
+      <a class="project-card" href="https://github.com/mmk119" target="_blank" rel="noopener">
+        <div class="project-card-top">
+          <span class="project-icon">🌐</span>
+          <span class="project-period">Fall 2024 · FYP</span>
+        </div>
+        <h3>CivicConnect</h3>
+        <p>Full-stack volunteer platform centralizing NGO opportunities, with Role-Based Access Control for Admin, NGO, and Volunteer roles. Replaced reliance on social media for hundreds of community members.</p>
+        <div class="project-stack">
+          <span class="tag green">React</span>
+          <span class="tag green">Node.js</span>
+          <span class="tag green">Express</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Mongoose</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/mmk119" target="_blank" rel="noopener">
+        <div class="project-card-top">
+          <span class="project-icon">🧠</span>
+          <span class="project-period">Fall 2025 · Team</span>
+        </div>
+        <h3>Brain Tumor Detection</h3>
+        <p>Image segmentation pipeline for brain tumor detection using Convolutional Neural Networks — primarily the UNet architecture — for medical imaging analysis.</p>
+        <div class="project-stack">
+          <span class="tag accent">Python</span>
+          <span class="tag accent">CNN</span>
+          <span class="tag accent">UNet</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/mmk119" target="_blank" rel="noopener">
+        <div class="project-card-top">
+          <span class="project-icon">🏥</span>
+          <span class="project-period">Spring 2025 · Team</span>
+        </div>
+        <h3>HealHub</h3>
+        <p>Structured, normalized Hospital Management Database System with comprehensive relational schema design using MySQL.</p>
+        <div class="project-stack">
+          <span class="tag">MySQL</span>
+          <span class="tag">Database Design</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/mmk119/BattleShip-Innovative-Coders" target="_blank" rel="noopener">
+        <div class="project-card-top">
+          <span class="project-icon">🚢</span>
+          <span class="project-period">Fall 2023 · Team</span>
+        </div>
+        <h3>Battleship Game</h3>
+        <p>Strategy-based command-line Battleship with human vs AI gameplay. Focused on algorithmic AI design with optimized turn efficiency and search strategy.</p>
+        <div class="project-stack">
+          <span class="tag red">C</span>
+          <span class="tag red">Algorithms</span>
+          <span class="tag red">AI</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">// education</p>
+    <h2 class="section-title">Academic background</h2>
+    <p class="section-desc" style="margin-bottom: 2rem;">Building a strong foundation in CS theory and applied engineering.</p>
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree">B.S. in Computer Science</div>
+        <div class="edu-school">American University of Beirut (AUB)</div>
+        <div class="edu-date">August 2023 – May 2026 · Beirut, Lebanon</div>
+        <div class="edu-note">
+          <span>🏅</span>
+          <span>Recipient of the HES University Scholarship Program (USP) — full tuition coverage.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES -->
+  <section id="activities">
+    <p class="section-label">// leadership & activities</p>
+    <h2 class="section-title">Beyond the code</h2>
+    <p class="section-desc" style="margin-bottom: 2rem;">I believe impactful engineers also lead, volunteer, and grow outside the terminal.</p>
+    <div class="activities-list">
+      <div class="activity-item">
+        <div class="activity-icon">🇵🇸</div>
+        <div>
+          <h4>AUB Palestinian Cultural Club (PCC)</h4>
+          <p>Managed club finances and budget for extensive activities — strengthening financial management, large-scale event organization, and inter-club communication.</p>
+        </div>
+      </div>
+      <div class="activity-item">
+        <div class="activity-icon">💡</div>
+        <div>
+          <h4>HES Scholar</h4>
+          <p>Training in job readiness, entrepreneurship, communication, public speaking, and stress management through the HES scholarship program.</p>
+        </div>
+      </div>
+      <div class="activity-item">
+        <div class="activity-icon">🤝</div>
+        <div>
+          <h4>Community Engagement</h4>
+          <p>Volunteered with Beit Atfal Assomoud and HEAVEN, supporting children and patients in underserved communities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-box">
+      <h2>Let's connect</h2>
+      <p>I'm actively looking for opportunities and always open to a good conversation about tech, projects, or ideas.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:mohammad15kassem@gmail.com">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          mohammad15kassem@gmail.com
+        </a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/mohammad-kassem-74a2241a5" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-outline" href="https://github.com/mmk119" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Mohammad M. Kassem · Built with HTML & CSS · Lebanon 🇱🇧</p>
+  </footer>
+
+</body>
+</html>
